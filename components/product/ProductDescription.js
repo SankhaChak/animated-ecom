@@ -3,6 +3,8 @@ const ProductDescription = ({
   price,
   description,
   sizes = [],
+  selectedSize,
+  handleChangeSize,
   otherImages = [],
   handleDisplayImgChange,
 }) => {
@@ -23,7 +25,12 @@ const ProductDescription = ({
         <div className="flex items-center gap-2">
           {sizes.map((size) => (
             <span
-              className="h-12 w-12 flex items-center justify-center border border-slate-600 rounded-full"
+              className={`h-12 w-12 flex items-center justify-center border border-slate-600 rounded-full ${
+                selectedSize === size
+                  ? "border-2 border-slate-800"
+                  : "border-opacity-40"
+              }`}
+              onClick={() => handleChangeSize(size)}
               key={size}
             >
               {size}

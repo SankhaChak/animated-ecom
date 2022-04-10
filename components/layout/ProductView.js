@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { gsap } from "gsap";
 
 import ProductDescription from "../product/ProductDescription";
@@ -8,6 +8,15 @@ const ProductView = ({ product }) => {
 
   const [displayImgSrc, setDisplayImgSrc] = useState(imgSrc);
   const [imgIdx, setImgIdx] = useState(1);
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  useEffect(() => {
+    if (sizes.length) {
+      setSelectedSize(sizes[0]);
+    }
+  }, [sizes]);
+
+  const handleChangeSize = (size) => setSelectedSize(size);
 
   const handleDisplayImgChange = (src, idx) => {
     if (src !== displayImgSrc) {
@@ -34,6 +43,8 @@ const ProductView = ({ product }) => {
         price={price}
         otherImages={[imgSrc, ...otherImages]}
         sizes={sizes}
+        selectedSize={selectedSize}
+        handleChangeSize={handleChangeSize}
         handleDisplayImgChange={handleDisplayImgChange}
       />
       <div className="col-span-1 md:col-span-2 relative order-1 md:order-2 flex justify-center md:justify-end md:items-end">
