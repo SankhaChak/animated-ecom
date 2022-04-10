@@ -13,7 +13,7 @@ export default function Home({ featuredProduct, products }) {
 
       <main className="min-h-screen max-w-screen-2xl w-11/12 mx-auto px-2 flex flex-col">
         <Navbar />
-        <Hero featuredProduct={featuredProduct} />
+        <Hero featuredProduct={featuredProduct} products={products} />
       </main>
     </div>
   );
@@ -21,7 +21,7 @@ export default function Home({ featuredProduct, products }) {
 
 export async function getStaticProps() {
   const productRes = await fetch(
-    "https://run.mocky.io/v3/cdc3132d-f879-4434-8ef8-082db737ef55"
+    "https://zzsrwmhjtgrfa1m1xngldomvndz2.requestly.me/products"
   );
 
   const products = await productRes.json();
