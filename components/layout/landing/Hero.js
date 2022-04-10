@@ -3,12 +3,13 @@ import FeaturedProduct from "../../landing/FeaturedProduct";
 import NextProduct from "../../landing/NextProduct";
 
 const Hero = ({ featuredProduct, products }) => {
-  const { name, imgSrc, similarProducts } = featuredProduct;
+  const { id, name, imgSrc, similarProducts } = featuredProduct;
   const nextProduct = products[0];
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-9 flex-1">
       <FeaturedProduct
+        id={id}
         name={name}
         imgSrc={imgSrc}
         similarProducts={similarProducts}
