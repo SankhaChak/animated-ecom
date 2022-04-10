@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import BaseInput from "../base/BaseInput";
-import BaseNavLink from "../base/BaseNavLink";
-import IconwithBadge from "../base/IconwithBadge";
-import { CartIcon, FavouriteIcon, Logo, UserIcon } from "../icons";
+import BaseInput from "../../base/BaseInput";
+import BaseNavLink from "../../base/BaseNavLink";
+import IconwithBadge from "../../base/IconwithBadge";
+import { CartIcon, FavouriteIcon, Logo, UserIcon } from "../../icons";
 
 const Navbar = () => {
   const { pathname } = useRouter();

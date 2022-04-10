@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Navbar from "../components/layout/Navbar";
+import Hero from "../components/layout/landing/Hero";
+import Navbar from "../components/layout/common/Navbar";
 
-export default function Home() {
+export default function Home({ featuredProduct, products }) {
   return (
     <div>
       <Head>
@@ -10,9 +11,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen max-w-screen-2xl w-11/12 mx-auto px-2">
+      <main className="min-h-screen max-w-screen-2xl w-11/12 mx-auto px-2 flex flex-col">
         <Navbar />
+        <Hero featuredProduct={featuredProduct} />
       </main>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const productRes = await fetch(
+    "https://run.mocky.io/v3/cdc3132d-f879-4434-8ef8-082db737ef55"
+  );
+
+  const products = await productRes.json();
+
+  const featuredProductIdx = products.findIndex(
+    (product) => product.isFeatured
+  );
+
+  const featuredProduct = products[featuredProductIdx];
+  products.splice(featuredProductIdx, 1);
+
+  return {
+    props: { featuredProduct, products },
+  };
 }
