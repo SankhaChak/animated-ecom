@@ -4,6 +4,7 @@ const ProductDescription = ({
   description,
   sizes = [],
   otherImages = [],
+  handleDisplayImgChange,
 }) => {
   return (
     <div className="col-span-1 md:col-span-3 order-2 md:order-1 flex flex-col justify-center gap-6">
@@ -33,10 +34,11 @@ const ProductDescription = ({
           </span>
         </div>
       </div>
-      <div className="flex flex-wrap gap-8">
-        {otherImages.map((img) => (
+      <div className="flex justify-center md:justify-start flex-wrap gap-8">
+        {otherImages.map((img, idx) => (
           <img
-            className="w-32 transition-transform duration-500 transform origin-top scale-100 hover:scale-125 rounded-md"
+            onClick={() => handleDisplayImgChange(img, idx + 1)}
+            className="w-32 object-cover transition-transform duration-500 transform origin-top scale-75 hover:scale-90 md:scale-100 md:hover:scale-125 rounded-md"
             key={img}
             src={img}
             alt={name}
