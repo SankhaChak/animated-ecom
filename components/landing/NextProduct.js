@@ -9,7 +9,7 @@ const NextProduct = ({ nextProduct }) => {
           src={nextProduct.imgSrc}
           alt={nextProduct.name}
         />
-        <h4 className="text-5xl font-bold transform rotate-90 stroked-text -translate-x-1/2 -translate-y-72">
+        <h4 className="text-5xl font-bold transform rotate-90 stroked-text -translate-x-1/2 -translate-y-72 collection">
           SUMMER 2020
         </h4>
         <h5 className="flex items-center gap-2 font-medium">

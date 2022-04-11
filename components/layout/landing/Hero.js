@@ -14,66 +14,82 @@ const Hero = ({ featuredProduct, products }) => {
   }, []);
 
   const animateOnMount = () => {
-    gsap.fromTo(
-      ".featured-image",
-      {
-        opacity: 0,
-        y: "8rem",
-        duration: 0.8,
-      },
-      {
-        opacity: 1,
-        y: "0",
-        duration: 0.8,
-      }
-    );
+    const animateFeaturedImage = () =>
+      gsap.fromTo(
+        ".featured-image",
+        {
+          opacity: 0,
+          y: "8rem",
+          duration: 0.8,
+        },
+        {
+          opacity: 1,
+          y: "0",
+          duration: 0.8,
+          onComplete: animateProducts,
+        }
+      );
 
-    gsap.fromTo(
-      ".products",
-      {
-        opacity: 0,
-        y: "-8rem",
-        duration: 0.8,
-      },
-      {
-        opacity: 1,
-        y: "0",
-        duration: 0.8,
-      }
-    );
+    const animateProducts = () => {
+      const products = document.querySelectorAll(".products");
+      let delay = 0;
 
-    gsap.fromTo(
-      ".product-name",
-      {
-        opacity: 0,
-        x: "-8rem",
-        duration: 0.8,
-      },
-      {
-        opacity: 1,
-        x: "0",
-        duration: 0.8,
-      }
-    );
+      products.forEach((product, idx) => {
+        gsap.fromTo(
+          product,
+          {
+            opacity: 0,
+            y: "-8rem",
+            duration: 0.8,
+          },
+          {
+            opacity: 1,
+            y: "0",
+            duration: 0.8,
+            delay,
+            onComplete: () => {
+              if (idx === products.length - 1) {
+                animateProductName();
+              }
+            },
+          }
+        );
 
-    gsap.fromTo(
-      ".product-link",
-      {
-        scale: 0,
-        x: "-8rem",
-        duration: 0.8,
-      },
-      {
-        scale: 1.5,
-        x: "0",
-        duration: 0.8,
-      },
-      {
-        scale: 1,
-        x: "0",
-        duration: 0.8,
-      }
-    );
+        delay += 0.8;
+      });
+    };
+    const animateProductName = () =>
+      gsap.fromTo(
+        ".product-name",
+        {
+          opacity: 0,
+          x: "-8rem",
+          duration: 0.8,
+        },
+        {
+          opacity: 1,
+          x: "0",
+          duration: 0.8,
+          onComplete: animateProductLink,
+        }
+      );
+
+    const animateProductLink = () =>
+      gsap.fromTo(
+        ".product-link",
+        {
+          transformOrigin: "center",
+          scale: 0,
+          x: "-8rem",
+        },
+        {
+          scale: 1,
+          x: "0",
+          duration: 0.8,
+        }
+      );
+
+    animateFeaturedImage();
   };
 
   return (
