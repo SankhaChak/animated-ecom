@@ -49,11 +49,12 @@ const ProductView = ({ product }) => {
       />
       <div className="col-span-1 md:col-span-2 relative order-1 md:order-2 flex justify-center md:justify-end md:items-end">
         <img
-          className="md:absolute md:bottom-0 max-h-[90%] display-image"
+          className="md:absolute md:bottom-0 max-h-[90%] display-image z-10"
           src={displayImgSrc}
           alt={name}
         />
-        <div className="hidden md:flex flex-col gap-4 items-center -mr-12 py-24">
+        <span className="hidden md:block bg-blue-400 opacity-50 h-[36rem] w-[36rem] absolute top-1/4 right-1/4 transform translate-x-1/2 rounded-full" />
+        <div className="hidden md:flex flex-col gap-4 items-center -mr-12 py-24 relative z-20">
           <span className="text-3xl font-medium">{paddedNumber(imgIdx)}</span>
           <span className="h-36 w-[0.1rem] bg-slate-600 block opacity-30" />
           <span>{paddedNumber(otherImages.length + 1)}</span>
