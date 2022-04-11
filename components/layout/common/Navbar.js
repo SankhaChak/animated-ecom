@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { gsap } from "gsap";
+
 import BaseInput from "../../base/BaseInput";
 import BaseNavLink from "../../base/BaseNavLink";
 import IconwithBadge from "../../base/IconwithBadge";
@@ -7,6 +10,34 @@ import { CartIcon, FavouriteIcon, Logo, UserIcon } from "../../icons";
 
 const Navbar = () => {
   const { pathname } = useRouter();
+
+  useEffect(() => {
+    animateOnMount();
+  }, []);
+
+  const animateOnMount = () => {
+    const baseNavLinks = document.querySelectorAll(".base-nav-link");
+    let delay = 0;
+
+    baseNavLinks.forEach((link) => {
+      gsap.fromTo(
+        link,
+        {
+          opacity: 0,
+          x: "2rem",
+          duration: 0.2,
+        },
+        {
+          opacity: 1,
+          x: "0",
+          duration: 0.4,
+          delay,
+        }
+      );
+
+      delay += 0.8;
+    });
+  };
 
   return (
     <nav className="py-8 px-4 md:p-8 flex items-center justify-between">
