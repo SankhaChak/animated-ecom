@@ -1,3 +1,5 @@
+import { gsap } from "gsap";
+
 const ProductDescription = ({
   name,
   price,
@@ -8,6 +10,28 @@ const ProductDescription = ({
   otherImages = [],
   handleDisplayImgChange,
 }) => {
+  const handleClick = (ev) => {
+    gsap.fromTo(
+      ev.target,
+      {
+        scale: 0.8,
+      },
+      {
+        scale: 1,
+        onComplete: () => {
+          ev.target.style = {};
+        },
+      }
+    );
+  };
+
+  const changeSize = (ev, size) => {
+    // console.log({ ev });
+
+    handleChangeSize(size);
+    handleClick(ev);
+  };
+
   return (
     <div className="col-span-1 md:col-span-3 order-2 md:order-1 flex flex-col justify-center gap-6">
       <h1 className="text-3xl text-center md:text-left md:text-5xl font-bold md:max-w-[9ch] leading-normal">
@@ -16,7 +40,10 @@ const ProductDescription = ({
       <h2 className="text-2xl md:text-3xl">$ {price}</h2>
       <div className="md:flex md:items-center gap-8">
         <h3 className="text-xl max-w-[40ch]">{description}</h3>
-        <button className="bg-red-600 text-white py-2 w-full mt-4 md:mt-0 md:py-0 md:h-24 md:w-24 text-lg flex items-center justify-center rounded-full">
+        <button
+          className="bg-red-600 text-white py-2 w-full mt-4 md:mt-0 md:py-0 md:h-24 md:w-24 text-lg flex items-center justify-center rounded-full transform scale-100 transition-transform duration-300 hover:scale-125"
+          onClick={handleClick}
+        >
           Add
         </button>
       </div>
@@ -30,7 +57,7 @@ const ProductDescription = ({
                   ? "border-2 border-slate-800"
                   : "border-opacity-40"
               }`}
-              onClick={() => handleChangeSize(size)}
+              onClick={(ev) => changeSize(ev, size)}
               key={size}
             >
               {size}
