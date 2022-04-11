@@ -19,4 +19,5 @@ The website is live [here](https://animated-ecom.vercel.app/).
 Here are some screenshots of the live website -
 
 ![Screenshot from 2022-04-11 05-30-38](https://user-images.githubusercontent.com/61096193/162645772-c156dc2f-0342-4add-af8b-3d0630661d19.png)
-![Screenshot from 2022-04-11 05-31-12](https://user-images.githubusercontent.com/61096193/162645773-d078f2fe-1837-4e96-bb64-746441d38b3e.png)
+
+![Screenshot from 2022-04-11 05-42-29](https://user-images.githubusercontent.com/61096193/162646046-fa6df79d-8e2f-4dcf-93cf-ae4fbf3f9e1a.png)
